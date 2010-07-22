@@ -1,0 +1,14 @@
+<table>
+	<tr>
+		<th width="60%">Comments</th>
+		<th width="10%">Creator</th>
+		<th width="30%">Creation time</th>		
+	</tr>
+	
+	<%=render(:partial =>"comment", :collection=>comment_block.comments.find(:all)) %>
+	
+
+
+</table>
+<p><%= link_to 'New Post', "#{comments_path}/new?post=#{comment_block.id}", :id=>"app_menu" %><br/>
+<%= link_to 'Back', "#{topics_path}/#{comment_block.topic_id}", :id=>"app_menu" %></p>

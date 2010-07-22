@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+	before_filter :authenticate_user!
+	before_filter :get_admin, :only=>[:destroy, :edit, :update]
   # GET /comments
   # GET /comments.xml
   def index

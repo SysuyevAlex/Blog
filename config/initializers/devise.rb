@@ -27,7 +27,8 @@ Devise.setup do |config|
   # authenticating an user, both parameters are required. Remember that those
   # parameters are used only when authenticating and not when retrieving from
   # session. If you need permissions, you should implement that in a before filter.
-  # config.authentication_keys = [ :email ]
+  config.authentication_keys = [ :name ]
+  #config.password_length = 3..20
 
   # The realm used in Http Basic Authentication
   # config.http_authentication_realm = "Application"

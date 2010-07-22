@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
+  before_filter :get_admin, :except=>[:index, :show]
   def index
     @posts = Post.all
 

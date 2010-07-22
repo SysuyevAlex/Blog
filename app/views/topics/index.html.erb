@@ -10,11 +10,10 @@
 
 <% @topics.each do |topic| %>
   <tr>
-    <td><%=h topic.name %></td>
+    <td><%=link_to "#{h(topic.name)}", topic %></td>
     <td><%=h topic.creation_time %></td>
     <td><%=h topic.last_post %></td>
-    <td><%=h topic.user_id %></td>
-    <td><%= link_to 'Show', topic %></td>
+    <td><%=h topic.user.name %></td>    
     <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
     <td><%= link_to 'Destroy', topic, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

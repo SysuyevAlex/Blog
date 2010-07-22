@@ -1,6 +1,7 @@
 class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.xml
+  before_filter :get_admin, :except=>[:index, :show]
   def index
     @topics = Topic.all
 

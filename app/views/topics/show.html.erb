@@ -1,23 +1,28 @@
-<p>
-  <b>Name:</b>
-  <%=h @topic.name %>
-</p>
-
-<p>
-  <b>Creation time:</b>
-  <%=h @topic.creation_time %>
-</p>
-
-<p>
-  <b>Last post:</b>
-  <%=h @topic.last_post %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%=h @topic.user_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+<table>
+	<tr>
+		<th width="60%">Posts</th>
+		<th width="10%">Creator</th>
+		<th width="25%">Creation time</th>
+		<th width="5%">Comments</th>
+	</tr>
+<% for post in @topic.posts do %>
+	<tr>
+		<td> <%=link_to "#{post.title}", post%><br/>
+		     <%=post.content%>
+		</td>
+		<td><%=post.user.name%></td>
+		<td><%=post.creation_time%></td>
+		<td><%=post.comments.count%></td>
+	</tr>
+	<tr>
+		<td>
+			<%=link_to_function "Comments", visual_effect(:toggle_slide, "comb#{post.id}")	%>
+			<div id=<%="comb#{post.id}"%> style="display: none" >
+				<%=render(:partial =>"comment_block", :object=>post) %>
+			</div>
+		</td>
+	</tr>
+<%end%>
+</table>
+<p><%= link_to 'New Post', "#{posts_path}/new?topic=#{@topic.id}", :id=>"app_menu" %><br/>
+<%= link_to 'Back', topics_path, :id=>"app_menu" %></p>

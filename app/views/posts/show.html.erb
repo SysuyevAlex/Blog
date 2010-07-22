@@ -1,28 +1,16 @@
-<p>
-  <b>Title:</b>
-  <%=h @post.title %>
-</p>
-
-<p>
-  <b>Content:</b>
-  <%=h @post.content %>
-</p>
-
-<p>
-  <b>Creation time:</b>
-  <%=h @post.creation_time %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%=h @post.user_id %>
-</p>
-
-<p>
-  <b>Topic:</b>
-  <%=h @post.topic_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<table>
+	<tr>
+		<th width="60%">Comments</th>
+		<th width="10%">Creator</th>
+		<th width="30%">Creation time</th>		
+	</tr>
+<% for comment in @post.comments do %>
+	<tr>
+		<td><%=comment.content%></td>
+		<td><%=comment.user.name%></td>
+		<td><%=comment.creation_time%></td>		
+	</tr>
+<%end%>
+</table>
+<p><%= link_to 'New Post', "#{comments_path}/new?post=#{@post.id}", :id=>"app_menu" %><br/>
+<%= link_to 'Back', "#{topics_path}/#{@post.topic_id}", :id=>"app_menu" %></p>
