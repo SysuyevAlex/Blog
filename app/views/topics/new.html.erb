@@ -7,21 +7,13 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
-  <p>
-    <%= f.label :creation_time %><br />
-    <%= f.datetime_select :creation_time %>
-  </p>
-  <p>
-    <%= f.label :last_post %><br />
-    <%= f.datetime_select :last_post %>
-  </p>
-  <p>
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </p>
+  <input type="hidden" id="topic_time" name="topic[creation_time]" value="<%=Time.now %>" />
+  <input type="hidden" id="topic_time" name="topic[user_id]" value="<%=current_user.id%>" />
+
   <p>
     <%= f.submit 'Create' %>
-  </p>
+  </p>  
+  
 <% end %>
 
 <%= link_to 'Back', topics_path %>

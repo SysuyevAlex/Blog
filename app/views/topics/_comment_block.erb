@@ -6,9 +6,20 @@
 	</tr>
 	
 	<%=render(:partial =>"comment", :collection=>comment_block.comments.find(:all)) %>
-	
-
 
 </table>
-<p><%= link_to 'New Post', "#{comments_path}/new?post=#{comment_block.id}", :id=>"app_menu" %><br/>
-<%= link_to 'Back', "#{topics_path}/#{comment_block.topic_id}", :id=>"app_menu" %></p>
+	<%=link_to_function "Create Comment", visual_effect(:toggle_slide, "mesnew#{comment_block.id}") %>
+	<div id=<%="mesnew#{comment_block.id}"%> style="display:none">
+		<% remote_form_for (@comment), :update=>"comment_blockk#{comment_block.id}" do |f| %>
+			<p>			
+				<%=f.text_area(:content) %>
+			</p>
+	
+			<input type="hidden" id="comment_topic_id" name="comment[user_id]" value="<%=comment_block.user.id %>" />	
+			<input type="hidden" id="comment_time" name="comment[creation_time]" value="<%=Time.now %>" />			
+			<input type="hidden" id="comment_post_id" name="comment[post_id]" value="<%=comment_block.id %>" />
+			<p>
+				<%=f.submit "Create"%>
+			</p>	
+		<%end%>
+	</div>

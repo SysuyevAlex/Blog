@@ -7,7 +7,7 @@
 	</tr>
 <% for post in @topic.posts do %>
 	<tr>
-		<td> <%=link_to "#{post.title}", post%><br/>
+		<td><span id="post-title"> <%=post.title%></span><br/>
 		     <%=post.content%>
 		</td>
 		<td><%=post.user.name%></td>

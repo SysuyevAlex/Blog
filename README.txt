@@ -1,3 +1,5 @@
+How to create manual:
+
 rails -d mysql blog
 cd blog
 ruby script/generate scaffold topic name:string creation_time:datetime last_post:datetime user_id:integer
