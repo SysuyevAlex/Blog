@@ -8,8 +8,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :topics
   
-  map.root :controller => 'topics'
-
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  map.root :controller => "topics"
+  
 end

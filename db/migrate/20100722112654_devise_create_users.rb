@@ -8,7 +8,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.rememberable
       t.trackable
 	  t.string :name
-	  t.integer :role
+	  t.integer :role, :default=>0
       # t.lockable
 
       t.timestamps

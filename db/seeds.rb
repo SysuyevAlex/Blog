@@ -5,7 +5,8 @@ Comment.delete_all
 
 admin=User.create({:name=>'admin', :email=>'probitiy@mail.ru', :password=>'111111', :password_confirmation=>'111111', :role=>1, :confirmation_token=>1})
 user=User.create({:name=>'user', :email=>'user@user.ru', :password=>'222222', :password_confirmation=>'222222', :role=>0, :confirmation_token=>2})
-
+User.first.update_attribute(:role, 1)
+User.last.update_attribute(:role, 0)
 topics = Topic.create([{:name=>'First test topic', :creation_time=>Time.now-3.month, :user_id=>admin.id, :last_post=>Time.now},
 			{:name=>'Admin topic', :creation_time=>Time.now-2.week, :user_id=>admin.id, :last_post=>Time.now},
 			{:name=>'Topic for all', :creation_time=>Time.now, :user_id=>admin.id, :last_post=>Time.now}])

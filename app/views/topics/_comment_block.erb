@@ -8,6 +8,7 @@
 	<%=render(:partial =>"comment", :collection=>comment_block.comments.find(:all)) %>
 
 </table>
+	<% if user_signed_in? %>
 	<%=link_to_function "Create Comment", visual_effect(:toggle_slide, "mesnew#{comment_block.id}") %>
 	<div id=<%="mesnew#{comment_block.id}"%> style="display:none">
 		<% remote_form_for (@comment), :update=>"comment_blockk#{comment_block.id}" do |f| %>
@@ -15,7 +16,7 @@
 				<%=f.text_area(:content) %>
 			</p>
 	
-			<input type="hidden" id="comment_topic_id" name="comment[user_id]" value="<%=comment_block.user.id %>" />	
+			<input type="hidden" id="comment_topic_id" name="comment[user_id]" value="<%=current_user.id %>" />	
 			<input type="hidden" id="comment_time" name="comment[creation_time]" value="<%=Time.now %>" />			
 			<input type="hidden" id="comment_post_id" name="comment[post_id]" value="<%=comment_block.id %>" />
 			<p>
@@ -23,3 +24,4 @@
 			</p>	
 		<%end%>
 	</div>
+	<% end %>

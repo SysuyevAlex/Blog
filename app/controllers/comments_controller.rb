@@ -2,17 +2,6 @@ class CommentsController < ApplicationController
 	before_filter :authenticate_user!
 	before_filter :get_admin, :only=>[:destroy, :edit, :update]
 
-  # GET /comments/new
-  # GET /comments/new.xml
-  def new
-    @comment = Comment.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @comment }
-    end
-  end
-
   # GET /comments/1/edit
   def edit
     @comment = Comment.find(params[:id])
